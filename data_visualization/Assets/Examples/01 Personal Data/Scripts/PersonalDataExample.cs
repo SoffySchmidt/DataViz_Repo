@@ -1,196 +1,172 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/*
+	Copyright © Carl Emil Carlsen 2020
+	http://cec.dk
+*/
+
 using System.IO;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PersonalDataExample : MonoBehaviour
 {
-    public string dataCsvFileName = "";
+	public string dataCsvFileName = "";
+	public GameObject textObjectPrefab = null;
 
-    //Lists are slower than arrays
-    //<> means generic type
-    //_people is private, thus uses "_"
-    List<Person> _people = new List<Person>();
+    //Lists: Dynamically sized array, where you do not need to define its size
+    //More flexibility and functionality than an array
+	List<Person> _people = new List<Person>();
 
-    int _ageMin, _ageMax;
-
-    void Awake()
-    {
-        //Parse
-        string csvFilePath = Application.streamingAssetsPath + "/" + dataCsvFileName;
-        string csvContent = File.ReadAllText(csvFilePath);
-        Parse(csvContent);
-
-        //Filter
-        Filter();
-
-        //Mine
-        Mine();
-
-        //Represent
-        Represent();
-
-        //Debug.Log("_people.Count: " + _people.Count);
-    }
-    //methods belong to the class of an object
-    //in C# we call them methods, not functions
-    void Parse(string csvContentText)
-    {
-        //Split by new lines in rows... '\n' works as "Enter" and jumps to next line
-        string[] rowContents = csvContentText.Split('\n');
+    //Dictionaries are similiar to Lists
+    //They take two generic terms. In this case an integer and a gameobject 
+    //as the two values
+	Dictionary<int,GameObject> _mainObjectLookup = new Dictionary<int,GameObject>();
+	int _ageMin, _ageMax;
 
 
-        //for each row...
-        for (int r = 1; r < rowContents.Length; r++)
-        {
-            string rowContent = rowContents[r];
-            //Debug.Log(rowContent);
-            //comma separated file, so it must be split between the commas
-            string[] fieldContents = rowContent.Split(',');
-            //creating object from class/"kageform"
-            Person person = new Person(r);
+	void Awake()
+	{
+		// Parse.
+		string csvFilePath = Application.streamingAssetsPath + "/" + dataCsvFileName;
+		string csvContent = File.ReadAllText( csvFilePath );
+		Parse( csvContent );
 
-            for (int f = 0; f < fieldContents.Length; f++)
-            {
-                string fieldContent = fieldContents[f];
+		// Filter.
+		Filter();
 
-              
+		// Mine.
+		Mine();
 
-                switch (f)
-                {
-                    case 0:
-                        //First Name
-                        person.firstName = fieldContent;
-                        break;
-                    case 1:
-                        //Last Name
-                        person.lastName = fieldContent;
-                        break;
-                    
-                    case 2:
-                        //Age                
-                        int age;
-                        //a bool evaluating whether or not it succeeded to parse the variable "age"
-                        bool parseSucceeded = int.TryParse(fieldContent, out age);
-                        if (parseSucceeded)
-                            person.age = age;
-                            
-                        break;
-                    case 3:   
-                        //Had Covid
-                        person.hadCovid = fieldContent.ToLower() == "yes";
-                        break;
-                    case 7:
-                        //ZipCode
-                        int postNumb;
-                        parseSucceeded = int.TryParse(fieldContent, out postNumb);
-                        if (parseSucceeded) person.postNumber = postNumb;
-                        break;
-                    case 8:
-                        //Has Pets
-                        person.hasPet = fieldContent.ToLower() == "yes";
-                        break;
-                    case 9:
-                        //Cohabitants
+		// Represent.
+		Represent();
 
-                        //string coHabText = fieldContent.ToString();
-                        //person.cohabitantsCount = coHabText;
-                        int coHab;
-                        parseSucceeded = int.TryParse(fieldContent, out coHab);
-                        if (parseSucceeded) person.postNumber = coHab;
-                        break;
-                    case 10:
-                        //Stream Games
-                        int streamGames;
-                        parseSucceeded = int.TryParse(fieldContent, out streamGames);
-                        if (parseSucceeded) person.streamGamesCount = streamGames;
-                        break;
-                    case 11:
-                        //Siblings
-                        int siblings;
-                        parseSucceeded = int.TryParse(fieldContent, out siblings);
-                        if (parseSucceeded) person.siblingCount = siblings;
-                        break;
+		// Interact.
+		AddInteraction();
+	}
 
-                }
-            }
 
-            //CASE 4, 5 + 6 are here below
+	void Parse( string csvText )
+	{
+		// Split by new lines in rows.
+		string[] rowContents = csvText.Split( '\n' );
 
-            // Parse covid relation level.
-            Person.CovidRelationLevel covidRelationLevel = Person.CovidRelationLevel.None;
-            if (fieldContents.Length > 6)
-            {
-                bool familyHadCovid, familyOrFriendsHadCovid, anyoneHadCovid;
-                if (
-                    bool.TryParse(fieldContents[4], out familyHadCovid) &&
-                    bool.TryParse(fieldContents[5], out familyOrFriendsHadCovid) &&
-                    bool.TryParse(fieldContents[6], out anyoneHadCovid)
-                )
-                {
-                    if (anyoneHadCovid) covidRelationLevel = Person.CovidRelationLevel.Anyone;
-                    else if (familyOrFriendsHadCovid) covidRelationLevel = Person.CovidRelationLevel.FamilyOrFriend;
-                    else if (familyOrFriendsHadCovid) covidRelationLevel = Person.CovidRelationLevel.Family;
-                }
-            }
-            person.covidRelationLevel = covidRelationLevel;
+		// For each row.
+		for( int r = 1; r < rowContents.Length; r++ ) {
+			string rowContent = rowContents[ r ];
+			string[] fieldContents = rowContent.Split( ',' );
+			Person person = new Person( r );
 
-            //Add to person list
-            _people.Add(person);
-        }
-    }
+			// For each field in this row.
+			for( int f = 0; f < fieldContents.Length; f++ ) {
+				string fieldContent = fieldContents[ f ];
 
-    void Filter()
-    {
-        //Inverted for-loop running from the highest to the lowest value
-        for (int p = _people.Count-1; p >= 0; p--)
-        {
-            Person person = _people[p];
+				switch( f )
+				{
+					case 0:
+						// First name.
+						person.firstName = fieldContent;
+						break;
+					case 2:
+						// Age.
+						int age;
+						bool parseSucceeded = int.TryParse( fieldContent, out age );
+						if( parseSucceeded ) person.age = age;
+						break;
+					case 3:
+						// Had covid
+						person.hadCovid = fieldContent.ToLower() == "yes";
+						break;
+				}
+			}
 
-            if (person.age < 18 || person.age > 127)
-            {
-                _people.RemoveAt(p);
-                Debug.Log("Invalid: " + person.firstName);
-            }
-        }
-    }
+			// Parse covid relation level.
+			Person.CovidRelationLevel covidRelationLevel = Person.CovidRelationLevel.None;
+			if( fieldContents.Length > 6 ) {
+				bool familyHadCovid = fieldContents[ 4 ].ToLower() == "yes";
+				bool familyOrFriendsHadCovid = fieldContents[ 5 ].ToLower() == "yes";
+				bool anyoneHadCovid = fieldContents[ 6 ].ToLower() == "yes";
+				if( familyHadCovid ) covidRelationLevel = Person.CovidRelationLevel.Family;
+				else if( familyOrFriendsHadCovid ) covidRelationLevel = Person.CovidRelationLevel.FamilyOrFriend;
+				else if( anyoneHadCovid ) covidRelationLevel = Person.CovidRelationLevel.Anyone;
+			}
+			person.covidRelationLevel = covidRelationLevel;
 
-    void Mine()
-    {
-        _ageMin = int.MaxValue;
-        _ageMax = int.MinValue;
+			// Add to person list.
+			_people.Add( person );
+		}
+	}
 
-        foreach(Person person in _people)
-        {
-            if (person.age > _ageMax) _ageMax = person.age;
-            else if (person.age < _ageMin) _ageMin = person.age;
 
-        }
+	void Filter()
+	{
+		for( int p = _people.Count-1; p >= 0; p-- ) {
+			Person person = _people[ p ];
 
-        Debug.Log("Min: " + _ageMin + " Max: " + _ageMax);
-    }
+			if( person.age < 18 || person.age > 127 ) { // If too young OR (||) too old
+				_people.RemoveAt( p );
+			}
+		}
+	}
 
-    void Represent()
-    {
-        for (int p = 0; p < _people.Count; p++)
-        {
-            Person person = _people[p];
-            float x = p;
-            //Converted to a normalized value from 0 - 1 
-            float height = Mathf.InverseLerp(_ageMin, _ageMax, person.age) * 10;
-            float y = height * 0.5f;
-            float width = 0.95f;
 
-            GameObject mainObject = new GameObject(person.id + " " + person.firstName);
+	void Mine()
+	{
+		_ageMin = int.MaxValue;
+		_ageMax = int.MinValue;
+		foreach( Person person in _people ) {
+			if( person.age > _ageMax ) _ageMax = person.age;
+			else if( person.age < _ageMin ) _ageMin = person.age;
+		}
+	}
 
-            mainObject.transform.SetParent(transform);
-            mainObject.transform.localPosition = new Vector3(x, y, 0);
 
-            GameObject barObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+	void Represent()
+	{
+		// Sort by age.
+		_people.Sort( ( a, b ) => a.age - b.age );
 
-            barObject.transform.SetParent(mainObject.transform);
-            barObject.transform.localPosition = Vector3.zero;
-            barObject.transform.localScale = new Vector3(width, height, 1);
-        }
-    }
+		// Create elements ...
+		for( int p = 0; p < _people.Count; p++ )
+		{
+			Person person = _people[ p ];
+
+			float mainX = p;
+			float barHeight = Mathf.InverseLerp( 0, _ageMax, person.age ) * 10; // Rescale from 0-max to 0-1 and scale up by 10
+			float barY = barHeight * 0.5f;
+			float barWidth = 0.95f;
+
+			GameObject mainObject = new GameObject( person.id + " " + person.firstName );
+			mainObject.transform.SetParent( transform );
+			mainObject.transform.localPosition = new Vector3( mainX, 0, 0 );
+
+			GameObject barObject = GameObject.CreatePrimitive( PrimitiveType.Cube );
+			barObject.transform.SetParent( mainObject.transform );
+			barObject.transform.localPosition = new Vector3( 0, barY, 0 );
+			barObject.transform.localScale = new Vector3( barWidth, barHeight, 1 );
+
+            //Here we add to the dictionary
+			// Add an entry to the object lookup, so that we can use person id to find it's associated main object in the scene.
+			_mainObjectLookup.Add( person.id, mainObject );
+		}
+	}
+
+
+	void AddInteraction()
+	{
+		foreach( Person person in _people )
+		{
+			GameObject mainObject = _mainObjectLookup[ person.id ];
+
+			GameObject textObject = Instantiate( textObjectPrefab ); // Make a copy of the original text object.
+			textObject.SetActive( true );
+			textObject.transform.SetParent( mainObject.transform );
+			textObject.transform.localPosition = Vector3.zero;
+			textObject.transform.Rotate( 0, 0, -45 );
+			textObject.GetComponent<TextMesh>().text = person.firstName;
+
+			Collider barCollider = mainObject.GetComponentInChildren<Collider>();
+			TextRevealer textRevealer = barCollider.gameObject.AddComponent<TextRevealer>(); // Instantiate (create) a new script and add it to colliders gameobject.
+            //TextObject of "TextRevealer" script equals textObject declared in this script
+            textRevealer.textObject = textObject;
+		}
+	}
 }

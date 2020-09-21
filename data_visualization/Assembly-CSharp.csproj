@@ -52,10 +52,19 @@
     <UnityVersion>2020.1.6f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Examples\01 Personal Data\Scripts\PersonalDataExample.cs" />
+    <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLTranslationRotationScaleExample.cs" />
     <Compile Include="Assets\Examples\01 Personal Data\Scripts\Person.cs" />
+    <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLTranslationExample.cs" />
+    <Compile Include="Assets\Examples\01 Personal Data\Scripts\TextRevealer.cs" />
+    <Compile Include="Assets\Examples\01 Personal Data\Scripts\PersonalDataExample.cs" />
+    <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLPrimitivesExample.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Icon\Procedural_Icon.cs" />
+    <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLOscillationExample.cs" />
+    <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLColorExample.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\Assignments\Procedural Icon\ProceduralShader.shader" />
+     <None Include="Assets\Examples\_Shared\Resources\GLShader.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
