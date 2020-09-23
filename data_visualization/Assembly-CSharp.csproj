@@ -57,10 +57,17 @@
     <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLTranslationExample.cs" />
     <Compile Include="Assets\Examples\01 Personal Data\Scripts\TextRevealer.cs" />
     <Compile Include="Assets\Examples\01 Personal Data\Scripts\PersonalDataExample.cs" />
+    <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLColorExample.cs" />
     <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLPrimitivesExample.cs" />
     <Compile Include="Assets\Examples\03 Procedural Icon\Procedural_Icon.cs" />
     <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLOscillationExample.cs" />
-    <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLColorExample.cs" />
+    <Compile Include="Assets\Examples\04 Quad Mesh\Scripts\MeshQuadExample.cs" />
+    <Compile Include="Assets\Bezier.cs" />
+    <Compile Include="Assets\Examples\04 Quad Mesh\Scripts\MeshBatchingMultipleShapes.cs" />
+    <Compile Include="Assets\Examples\_Shared\Polygon\EarcutNet\Earcut.cs" />
+    <Compile Include="Assets\Examples\_Shared\Polygon\Polygon.cs" />
+    <Compile Include="Assets\Examples\04 Quad Mesh\Scripts\MeshPolygonTriangulationExample.cs" />
+    <Compile Include="Assets\Examples\04 Quad Mesh\Scripts\MeshHeightMapExtrusionExample.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Assignments\Procedural Icon\ProceduralShader.shader" />

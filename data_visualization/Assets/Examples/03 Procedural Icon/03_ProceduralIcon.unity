@@ -249,10 +249,10 @@ MonoBehaviour:
   radius: 0.5
   color: {r: 1, g: 0.5, b: 1, a: 1}
   randomSeed: 0
-  horLeftColor: {r: 0.3301887, g: 0.3170006, b: 0.13207547, a: 0}
-  horRightColor: {r: 0.347152, g: 0.7615371, b: 0.9339623, a: 0}
-  verBotColor: {r: 0.18867922, g: 0.18049125, b: 0.18049125, a: 0}
-  verTopColor: {r: 0.1758989, g: 0.764151, b: 0.4597118, a: 0}
+  horLeftColor: {r: 0.27322888, g: 0.3814848, b: 0.4716981, a: 1}
+  horRightColor: {r: 0.9245283, g: 0.5840039, b: 0.116874315, a: 1}
+  verBotColor: {r: 0.18867922, g: 0.18049125, b: 0.18049125, a: 1}
+  verTopColor: {r: 0.2883232, g: 0.8396226, b: 0.28909633, a: 1}
   valence: 0
   activation: 0
 --- !u!4 &1944940642

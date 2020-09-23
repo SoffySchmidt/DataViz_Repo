@@ -7,10 +7,17 @@ public class Procedural_Icon : MonoBehaviour
     public Material material = null;
     public int circleCount = 1;
     const int circleResolution = 64;
-    Color newColor = new Color();
+    //Color currColor = new Color();
     public float radius = 0.5f;
-    float currentValue = 0f;
+
     public Color color = new Color(1, 0.5f, 1);
+
+    float xCirc, yCirc;
+
+
+
+    Vector3 worldPosition;
+
 
     public int randomSeed = 0;
 
@@ -35,48 +42,51 @@ public class Procedural_Icon : MonoBehaviour
             float y = Random.value;
             //X and Y position of circles. X increases with 1, X is a random value between 0 and 1
             GL.MultMatrix(Matrix4x4.Translate(new Vector3(i, y, 0)));
-            //calls method GLCircle with radius value of 0.5f
-            Color color = Color.HSVToRGB(Random.value, 1, 1);
-            GLCircle(0.5f, color);
+        
+            GLCircle(1f, color);
             GL.PopMatrix();
         }
     }
 
     private void Update()
     {
-        if (valence > 0f)
-        {
-            Color valCol = Color.Lerp(horLeftColor, horRightColor, valence);
-            //currentValue = valence;
-            
-            //color = valCol * actVal;
-            
-        }
-        if (activation > 0f)
-        {
-            Color actCol = Color.Lerp(verBotColor, verTopColor, activation);
-            //currentValue = activation;
-            
-            //color = actVal * valCol;
-        }
+        Color valCol = Color.Lerp(horLeftColor, horRightColor, valence);
+        Color actCol = Color.Lerp(verBotColor, verTopColor, activation);
+        color = Color.Lerp(valCol, actCol, 0.5f);
 
-        Debug.Log(currentValue);
 
-        //Debug.Log(valence);
+        float mouseRatioX = Input.mousePosition.x / Screen.width;
+        float mouseRatioY = Input.mousePosition.y / Screen.height;
+
+        Vector2 center = new Vector2(xCirc, yCirc) / 2;
+
+        //Debug.Log("center: " + center);
+
+        //Vector3 mousePos = new Vector3(mouseRatioX, mouseRatioY, 0f);
+
+        mouseRatioX = Mathf.Lerp(-1, 1, mouseRatioX);
+        mouseRatioY = Mathf.Lerp(-1, 1, mouseRatioY);
+
+        //color = new Color(mouseRatioX, mouseRatioY, 0);
+
+        //Debug.Log(mouseRatioX + " " + mouseRatioY);
+
+
+        //float lerpMouse;
+        //Vector3 mousePos = Input.mousePosition;
+        //mousePos.z = Camera.main.nearClipPlane;
+        //worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+
+        //lerpMouse = Mathf.Lerp(mousePos.x, mousePos.y, 1);
+
+
     }
 
     void GLCircle(float radius, Color color)
     {
         GL.Begin(GL.TRIANGLE_STRIP);
-        if(newColor != color)
-        {
-            GL.Color(newColor);
-        }
-        else
-        {
-            GL.Color(color);
-        }
 
+        GL.Color(color);
 
         for (int i = 0; i < circleResolution; i = i + 1)
         {
@@ -87,12 +97,39 @@ public class Procedural_Icon : MonoBehaviour
             float x = Mathf.Cos(angle) * radius;
             float y = Mathf.Sin(angle) * radius;
 
+            xCirc = x;
+            yCirc = y;
 
             GL.Vertex3(x, y, 0);
             GL.Vertex3(0, 0, 0);
         }
+
+        //Debug.Log("x pos: " + xCirc + "y pos: " + yCirc);
         GL.End();
     }
 
-   
+
+    /*
+    if (valence >= 0f)
+    {
+        currentValue = valence;
+        //currentValue = valence;
+        //newColor = Color.Lerp(horLeftColor, horRightColor, valence);
+
+        Color valCol = Color.Lerp(horLeftColor, horRightColor, valence);
+        color = valCol * currColor;
+
+
+    }
+    if (activation >= 0f)
+    {
+        currentValue = activation;
+        //currentValue = activation;
+        //newColor = Color.Lerp(verBotColor, verTopColor, activation);
+        Color actCol = Color.Lerp(horLeftColor, horRightColor, activation);
+        color = actCol * currColor;
+
+
+    }
+    */
 }
