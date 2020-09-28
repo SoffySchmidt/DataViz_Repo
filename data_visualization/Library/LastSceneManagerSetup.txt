@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Examples/04 Quad Mesh/Scenes/4.4 HeightmapExtrusion.unity
+- path: Assets/Examples/04 Shaders/Examples.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

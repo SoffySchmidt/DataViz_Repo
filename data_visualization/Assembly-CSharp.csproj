@@ -53,25 +53,57 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLTranslationRotationScaleExample.cs" />
+    <Compile Include="Assets\Examples\_Shared\Polygon\EarcutNet\Earcut.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Meshes\3.2 Quad Mesh\Scripts\MeshHeightMapExtrusionExample.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Meshes\3.2 Quad Mesh\Scripts\MeshBatchingMultipleShapes.cs" />
     <Compile Include="Assets\Examples\01 Personal Data\Scripts\Person.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Meshes\MeshDeformationExample.cs" />
+    <Compile Include="Assets\Examples\_Shared\Polygon\Polygon.cs" />
+    <Compile Include="Assets\Assignments\Procedural Object\Scripts\MakeSomeNoise.cs" />
     <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLTranslationExample.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Meshes\3.2 Quad Mesh\Scripts\MeshPolygonTriangulationExample.cs" />
+    <Compile Include="Assets\Assignments\Procedural Object\Scripts\WaterController.cs" />
     <Compile Include="Assets\Examples\01 Personal Data\Scripts\TextRevealer.cs" />
+    <Compile Include="Assets\Bezier.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Meshes\MeshDeformationExample2.cs" />
     <Compile Include="Assets\Examples\01 Personal Data\Scripts\PersonalDataExample.cs" />
     <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLColorExample.cs" />
+    <Compile Include="Assets\Assignments\Procedural Object\Scripts\WaterPlaneGen.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Meshes\3.2 Quad Mesh\Scripts\MeshQuadExample.cs" />
+    <Compile Include="Assets\Assignments\Procedural Object\Scripts\ProceduralObjectExample.cs" />
     <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLPrimitivesExample.cs" />
-    <Compile Include="Assets\Examples\03 Procedural Icon\Procedural_Icon.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Meshes\3.1 Procedural Icon\Procedural_Icon.cs" />
+    <Compile Include="Assets\Examples\03 Procedural Meshes\05 Procedural Grid - Homework\ProceduralGridExample.cs" />
     <Compile Include="Assets\Examples\02 GL Shapes\Scripts\GLOscillationExample.cs" />
-    <Compile Include="Assets\Examples\04 Quad Mesh\Scripts\MeshQuadExample.cs" />
-    <Compile Include="Assets\Bezier.cs" />
-    <Compile Include="Assets\Examples\04 Quad Mesh\Scripts\MeshBatchingMultipleShapes.cs" />
-    <Compile Include="Assets\Examples\_Shared\Polygon\EarcutNet\Earcut.cs" />
-    <Compile Include="Assets\Examples\_Shared\Polygon\Polygon.cs" />
-    <Compile Include="Assets\Examples\04 Quad Mesh\Scripts\MeshPolygonTriangulationExample.cs" />
-    <Compile Include="Assets\Examples\04 Quad Mesh\Scripts\MeshHeightMapExtrusionExample.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\02ModelPositionAsColor.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\14SquareGradient.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\ShaderPattern_2.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\10Checkers.shader" />
      <None Include="Assets\Assignments\Procedural Icon\ProceduralShader.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\03UvAsColor 1.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\SimplexNoise.cginc" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\15SquareOutline.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\05HorizontalInvertedGradient.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\11SquarePattern.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\18Random.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\06HorizontalScaleGradient 1.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\16RadialGradient.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\04HorizontalGradient.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\20SimplexNoiseDeformation.shader" />
+     <None Include="Assets\Examples\_Shared\Resources\00HardCodedColor.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\13RotatedSquareGradient.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\08HorizontalAlternation 1.shader" />
+     <None Include="Assets\Examples\_Shared\Resources\00HardCodedColorWithComments.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\07HorizontalRepeatedGradient.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\17Circle.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\01Color.shader" />
      <None Include="Assets\Examples\_Shared\Resources\GLShader.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\12HorizontalMirroredGradient.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\ShaderPattern.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\19SimplexNoise.shader" />
+     <None Include="Assets\Examples\04 Shaders\Materials\Resources\09HorizontalGradientPalette.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

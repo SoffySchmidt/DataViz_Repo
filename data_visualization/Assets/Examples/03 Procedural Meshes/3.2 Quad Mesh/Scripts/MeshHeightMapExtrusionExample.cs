@@ -34,7 +34,7 @@ public class MeshHeightMapExtrusionExample : MonoBehaviour
             //which you might want to place differently instead of on the total size of the mesh
 
             float tz = Mathf.InverseLerp(0, resolution.y - 1, nz); //Normalized position z (0.0 to 1.0)
-            float z = Mathf.Lerp(0, size.y, tz); //Scale to size.y
+            float z = Mathf.Lerp(0, size.y, tz);                   //Scale to size.y
             
             //Making resolution independent of size
 
