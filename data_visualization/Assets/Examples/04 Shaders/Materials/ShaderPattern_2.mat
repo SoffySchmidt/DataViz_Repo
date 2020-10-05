@@ -20,9 +20,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _Blend: 0.12
+    - _Blend: 0.71
     - _TileCount: 33
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.14392471, a: 1}
-    - _SecondaryColor: {r: 0.14901961, g: 0.42346275, b: 0.6784314, a: 1}
+    - _Color: {r: 0.93333334, g: 0.17254901, b: 0.26053384, a: 1}
+    - _SecondaryColor: {r: 0.18390886, g: 0.28535068, b: 0.38679248, a: 1}
   m_BuildTextureStacks: []

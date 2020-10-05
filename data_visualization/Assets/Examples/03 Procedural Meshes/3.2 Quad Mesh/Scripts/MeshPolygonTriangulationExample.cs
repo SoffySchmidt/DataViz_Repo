@@ -7,14 +7,14 @@ public class MeshPolygonTriangulationExample : MonoBehaviour
     public Material material;
     public Transform[] outlinePointTransforms = null;
     Mesh _mesh;
-    Polygon _polygon;
+    PolygonExample _polygon;
   
 
 
     void Awake()
     {
         _mesh = new Mesh();
-        _polygon = new Polygon();
+        _polygon = new PolygonExample();
 
     }
     void Update()

@@ -1,0 +1,16 @@
+Year,Zoonoses,Type,No. Deaths,Animals
+1918,Spanish Flu,Flu,50000000,Birds
+1937,West NileVirus,Virus,15000,Birds,Mosquitos
+1957,Asian Flu,Flu,100000,Birds
+1968,Hong Kong Flu,Flu,700000,Birds
+1976,Ebola Virus,Virus,14693,Bats, Pigs
+1981,HIV,Virus,30000000,Primates
+1994,Hendra Virus,Virus,4,Bats, Horses
+1997,Avian Flu,Flu,371,Birds
+1999,Nipah Virus,Virus,265,Bats, Pigs
+2002,SARS coronavirus,Virus,774,Bats, Civet Cats
+2009,Swine Flu,Flu,200000,Pigs
+2012,MERS coronavirus,Virus,858,Dromedary Camels,Bats
+2013,Avian Flu,Flu,616,Birds
+2015,Zika Virus,Virus,59,Chimpanzees, gorillas, orangutans, monkeys, baboons
+2019,Covid19,Virus,1000000,Bats,Pangolins
