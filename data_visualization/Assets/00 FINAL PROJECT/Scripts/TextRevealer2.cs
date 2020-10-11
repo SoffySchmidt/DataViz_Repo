@@ -5,7 +5,7 @@
 
 using UnityEngine;
 
-public class TextRevealer : MonoBehaviour
+public class TextRevealer2 : MonoBehaviour
 {
 	public GameObject textObject = null;
 

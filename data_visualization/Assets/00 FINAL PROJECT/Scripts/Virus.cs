@@ -8,6 +8,7 @@ public class Virus
     public int id;
     public int year;
     public string name;
+    public string animName;
     public int noDeaths;
     public float circleRad;
     //public string diseaseType;

@@ -163,7 +163,7 @@ public class PersonalDataExample : MonoBehaviour
 			textObject.transform.Rotate( 0, 0, -45 );
 			textObject.GetComponent<TextMesh>().text = person.firstName;
 
-			Collider barCollider = mainObject.GetComponentInChildren<Collider>();
+			Collider barCollider = mainObject.GetComponentInChildren<SphereCollider>();
 			TextRevealer textRevealer = barCollider.gameObject.AddComponent<TextRevealer>(); // Instantiate (create) a new script and add it to colliders gameobject.
             //TextObject of "TextRevealer" script equals textObject declared in this script
             textRevealer.textObject = textObject;

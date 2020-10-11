@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3536239349508257290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3536239349508257288}
+  - component: {fileID: 3536239349508257289}
+  m_Layer: 0
+  m_Name: Zoonose2
+  m_TagString: Zoonose
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3536239349508257288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536239349508257290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 394, y: 248, z: -29.495956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3536239349508257289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3536239349508257290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b43080e2c2f824da80b019af6b8721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalHostScript: {fileID: 0}
+  dataCsvFileName: ZoonoseData2.csv
+  textObjectPrefab: {fileID: 0}
+  _yearMin: 0
+  _yearMax: 0
+  _deathMin: 0
+  _deathMax: 0
+  circleCount: 16
+  repulsionForce: 400
+  centerForce: 0.05
+  padding: 200
+  mat: {fileID: 2100000, guid: 50d4b6a5c3c628f4dad59b854097dc91, type: 2}
+  yearScript: {fileID: 0}
+  mainObject: {fileID: 0}
+  sphereArray: []
+  mainObjectArray: []

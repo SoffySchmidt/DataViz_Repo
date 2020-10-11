@@ -7,6 +7,7 @@ TagManager:
   - wavesource
   - Zoonose
   - Animal
+  - PointMarker
   layers:
   - Default
   - TransparentFX
